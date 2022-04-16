@@ -1,0 +1,43 @@
+.hero-section-container{
+    height: 70vh;
+    /* width: 100vh; */
+    background-image: url("../../img/img1.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 600px;
+    font-family: Manrope;
+    position: relative;
+    
+
+}
+
+.hero-section-container h1{
+    font-weight: 700;
+}
+
+.hero-detail{
+    max-width: 500px;
+}
+
+.hero-card{
+    position: absolute;
+    top: 10%;
+    left: 55%;
+    height: 250px;
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    font-family: Manrope;
+}
+
+.hero-card h6{
+    font-weight: 700;
+}
+
+.hero-img{
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%;
+}
