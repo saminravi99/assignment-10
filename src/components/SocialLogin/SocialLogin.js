@@ -1,7 +1,31 @@
 import React from "react";
+import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
 import "./SocialLogin.css";
 
 const SocialLogin = () => {
+  const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
+
+  console.log(facebookUser, facebookLoading, facebookError);
+  console.log(googleUser, googleLoading, googleError);
+  console.log(githubUser, githubLoading, githubError);
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle();
+  };
+
+  const handleFacebookSignIn = () => {
+    signInWithFacebook();
+  };
+
+  const handleGithubSignIn = () => {
+    signInWithGithub();
+  };
+
+
+
   return (
     <div>
       <div className="d-flex  justify-content-center align-items-center my-3">
@@ -12,13 +36,28 @@ const SocialLogin = () => {
 
       <div className="social-btn">
         <div>
-          <button className="d-block mx-auto google-btn">Continue with Google</button>
+          <button
+            onClick={handleGoogleSignIn}
+            className="d-block mx-auto google-btn"
+          >
+            Continue with Google
+          </button>
         </div>
         <div>
-          <button className="d-block mx-auto facebook-btn">Continue with Facebook</button>
+          <button
+            onClick={handleFacebookSignIn}
+            className="d-block mx-auto facebook-btn"
+          >
+            Continue with Facebook
+          </button>
         </div>
         <div>
-          <button className="d-block mx-auto github-btn">Continue with Github</button>
+          <button
+            onClick={handleGithubSignIn}
+            className="d-block mx-auto github-btn"
+          >
+            Continue with Github
+          </button>
         </div>
       </div>
     </div>

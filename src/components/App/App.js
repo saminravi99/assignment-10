@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { createContext } from "react";
 import {  Route, Routes } from "react-router-dom";
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import Services from "../Services/Services";
@@ -15,6 +14,7 @@ import useBlogs from "../hooks/useBlogs";
 import useServices from "../hooks/useServices";
 import NotFound from "../NotFound/NotFound";
 import useReviews from "../hooks/useReviews";
+import Header from "../Header/Header"
 
 
 export const AllContext = createContext();

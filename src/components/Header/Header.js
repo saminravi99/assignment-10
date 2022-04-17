@@ -1,12 +1,22 @@
 import "./Header.css";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { signOut } from "firebase/auth";
+import auth from "../firebase.init";
 
 const Header = () => {
 
+  const navigate = useNavigate();
+
+
     const  [authUser] = useAuth();
+
+    const handleSignOut = () => {
+       signOut(auth);
+       navigate("/login");
+    };
     // let authUser = "user";
   return (
     <div className="nav-container my-3">
@@ -56,7 +66,7 @@ const Header = () => {
             </Nav>
             <Nav className="nav-link-container">
               {authUser ? (
-                <button className="btn btn-primary">Sign Out</button>
+                <button onClick={handleSignOut} className="btn btn-primary">Sign Out</button>
               ) : (
                 <Nav>
                   <NavLink
