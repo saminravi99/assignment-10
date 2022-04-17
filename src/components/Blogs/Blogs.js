@@ -1,10 +1,30 @@
-import React from 'react';
-import "./Blogs.css"
+import React, { useContext } from 'react';
+import './Blogs.css'
+import { AllContext } from '../App/App';
+import EachBlog from '../EachBlog/EachBlog';
+
+
 
 const Blogs = () => {
+
+    const {blogs} = useContext(AllContext);
+    
+
+
+    const blog = blogs.map(blog => {
+        return(
+            <EachBlog
+                key={blog.id}
+                {...blog}
+            ></EachBlog>
+        )
+    })
+
+
+
     return (
-        <div>
-            <h1>Blogs</h1>
+        <div className="row mx-auto my-lg-0 my-4">
+            {blog}
         </div>
     );
 };
