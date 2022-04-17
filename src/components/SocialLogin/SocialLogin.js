@@ -1,30 +1,40 @@
 import React from "react";
-import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithFacebook,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import "./SocialLogin.css";
 
 const SocialLogin = () => {
-  const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-  const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
+  const [signInWithFacebook] = useSignInWithFacebook(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGithub] = useSignInWithGithub(auth);
 
-  console.log(facebookUser, facebookLoading, facebookError);
-  console.log(googleUser, googleLoading, googleError);
-  console.log(githubUser, githubLoading, githubError);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
-    signInWithGoogle();
+    signInWithGoogle().then(() => {
+      navigate(from, { replace: true });
+    });
   };
 
   const handleFacebookSignIn = () => {
-    signInWithFacebook();
+    signInWithFacebook().then(() => {
+      navigate(from, { replace: true });
+    });
   };
 
   const handleGithubSignIn = () => {
-    signInWithGithub();
+    signInWithGithub().then(() => {
+      navigate(from, { replace: true });
+    });
   };
-
-
 
   return (
     <div>

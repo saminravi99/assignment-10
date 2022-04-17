@@ -15,6 +15,9 @@ import useServices from "../hooks/useServices";
 import NotFound from "../NotFound/NotFound";
 import useReviews from "../hooks/useReviews";
 import Header from "../Header/Header"
+import RequireAuth from "../RequireAuth/RequireAuth";
+import { Toaster } from "react-hot-toast";
+
 
 
 export const AllContext = createContext();
@@ -30,6 +33,7 @@ function App() {
   return (
     <AllContext.Provider value={{blogs, services, reviews}}>
       <Header></Header>
+      <Toaster></Toaster>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/services" element={<Services></Services>}></Route>
@@ -37,7 +41,11 @@ function App() {
           <Route path="/about-me" element={<AboutMe></AboutMe>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
-          <Route path="/checkout" element={<CheckOut></CheckOut>}></Route>
+          <Route path="/checkout" element={
+            <RequireAuth>
+              <CheckOut></CheckOut>
+            </RequireAuth>
+          }></Route>
           <Route path="/thankyou" element={<Thankyou></Thankyou>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import HeroSection from "../HeroSection/HeroSection";
 import Reviews from "../Reviews/Reviews";
 import Services from "../Services/Services";
@@ -17,6 +18,7 @@ const Home = () => {
         What Happy Clients Say About Me
       </h2>
       <Reviews></Reviews>
+      <Toaster></Toaster>
     </div>
   );
 };

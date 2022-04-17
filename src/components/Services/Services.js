@@ -5,7 +5,6 @@ import "./Services.css";
 
 const Services = () => {
   const {services} = useContext(AllContext);
-//   console.log(services);
 
   const eachService = services.map((service) => {
     return (

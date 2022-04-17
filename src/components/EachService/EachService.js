@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./EachService.css"
 const EachService = (props) => {
 
+   const navigate = useNavigate();
     const {service, headline, description, price} = props;
+ 
     return (
       <div className="col-lg-4 col-md-6 col-sm-12 mb-4 service-container">
         <div className="card service-card">
@@ -13,7 +16,7 @@ const EachService = (props) => {
             <h4 className="card-price text-center">Price: {price}</h4>
             <div className="d-flex justify-content-center align-items-center">
               <div className="mt-4">
-                <button className="btn btn-primary">Book Now</button>
+                <button onClick={() => navigate("/checkout")} className="btn btn-primary">Book Now</button>
               </div>
             </div>
           </div>

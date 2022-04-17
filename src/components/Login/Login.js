@@ -1,49 +1,58 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import "./Login.css";
+import toast from "react-hot-toast";
 
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
 
-  console.log(email, password);
 
-   const [signInWithEmailAndPassword, signInUser, signInLoading, signInError] = useSignInWithEmailAndPassword(auth);
-
-   console.log(signInUser, signInLoading, signInError);
-
-
+  const [signInWithEmailAndPassword, signInUser, signInError] =
+    useSignInWithEmailAndPassword(auth);
 
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleCreateAccount= () => {
+  let from = location?.state?.from?.pathname || "/";
+
+
+  const handleCreateAccount = () => {
     navigate("/signup");
-  }
-
-
-
-
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(email, password);
-     navigate('/');
-   }
+    signInWithEmailAndPassword(email, password)
+  };
+  
 
-   useEffect(() => {
-     if(signInError){
-        setError("User Does Not Exist. Please Sign Up");
-      }
-   }
-    , [signInError]);
+
+ 
+
+  useEffect(() => {
+    if (signInError && signInError?.message === "Firebase: Error (auth/user-not-found).") {
+      setError("User Does Not Exist. Please Sign Up");
+      toast.error("User Does Not Exist. Please Sign Up");
+    }else if(signInError && signInError?.message === "Firebase: Error (auth/wrong-password)."){
+      setError("Wrong Password");
+      toast.error("Wrong Password");
+    }
+  }, [signInError]);
+
+  useEffect(() => {
+    if (signInUser) {
+      navigate(from , { replace: true });
+      toast.success("Login Successful");
+    }
+  }, [signInUser, navigate, from]);
 
   const handleForgetPassword = () => {
     navigate("/forget-password");

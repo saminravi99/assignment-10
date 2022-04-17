@@ -10,14 +10,14 @@ const Header = () => {
 
   const navigate = useNavigate();
 
+  let from = navigate?.state?.from?.pathname || "/login";
 
     const  [authUser] = useAuth();
 
     const handleSignOut = () => {
        signOut(auth);
-       navigate("/login");
+       navigate(from);
     };
-    // let authUser = "user";
   return (
     <div className="nav-container my-3">
       <Navbar collapseOnSelect expand="lg" variant="light">

@@ -9,28 +9,23 @@ import "./SignUp.css";
 
 const SignUp = () => {
   const [name, setName] = useState("");
+  console.log(name);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  console.log(name, email, password, confirmPassword);
-
-  const [
-    createUserWithEmailAndPassword,
-    emailSignUpUser,
-    emailSignUpLoading,
-    emailSignUpError,
-  ] = useCreateUserWithEmailAndPassword(auth, {
-    sendEmailVerification: true,
-  });
-
-  console.log(emailSignUpUser, emailSignUpLoading, emailSignUpError);
+  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(
+    auth,
+    {
+      sendEmailVerification: true,
+    }
+  );
 
   const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
-    
+
     // if (password.length < 8) {
     //   setError("Password must be at least 8 characters");
     //   return;
@@ -49,11 +44,10 @@ const SignUp = () => {
     if (password !== confirmPassword) {
       setError("Password and Confirm Password does not match");
       return;
-    } 
+    }
 
     createUserWithEmailAndPassword(email, password);
-      navigate('/');
-    
+    navigate("/");
   };
   return (
     <div className="w-50 mx-auto my-5">
