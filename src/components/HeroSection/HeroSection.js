@@ -4,7 +4,7 @@ import ravi from "../../img/Ravi.jpg";
 
 const HeroSection = () => {
   return (
-    <div className="d-flex justify-content-around align-items-center pb-lg-5 hero-section-container">
+    <div className="d-flex justify-content-around align-items-lg-center  pb-lg-5 hero-section-container">
       <div className=" container hero-detail">
         <h1>
           Skin Care Now
@@ -20,14 +20,16 @@ const HeroSection = () => {
         <button className="btn btn-primary">Contact Me</button>
       </div>
       <div className="hero-card d-flex justify-content-center align-items-center">
-        <div>
+        <div >
           <div className=" d-flex justify-content-center align-items-center my-3">
             <img className="hero-img" src={ravi} alt="" />
           </div>
-          <h6 className=" text-center ">Dr. Samin Israr Ravi</h6>
-          <p className=" text-center">Skin Specialist</p>
-          <div className=" d-flex justify-content-center align-items-center my-3">
-            <button className="btn btn-primary">Make Schedule</button>
+          <div>
+            <h6 className=" text-center ">Dr. Samin Israr Ravi</h6>
+            <p className=" text-center">Skin Specialist</p>
+            <div className=" d-flex justify-content-center align-items-center my-3">
+              <button className="btn btn-primary">Make Schedule</button>
+            </div>
           </div>
         </div>
       </div>

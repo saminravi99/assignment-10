@@ -48,3 +48,17 @@
 .header-title > h2 span {
   font-weight: 700 !important;
 }
+
+@media screen and (max-width: 768px) {
+  .nav-link-container a {
+    display: block;
+    text-align: center;
+    border: none;
+    margin-bottom: 10px;
+  }
+
+  .nav-link-container a:hover {
+    border: none;
+    margin-bottom: 10px;
+  }
+}

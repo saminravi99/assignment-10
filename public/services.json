@@ -2,24 +2,24 @@
     {
         "id": "1",
         "service": "Laser Skin Rejuvenation",
-        "headline": "A skin rejuvenation service",
-        "description": "Laser skin treatment is an advanced wrinkle removal treatment that uses infrared light to tighten the skin without surgery. The laser light delivers heat to layers beneath the skin’s surface, stimulating collagen production and making the skin look tighter. Many patients consider the procedure a good alternative to the traditional face lift, as it requires no anesthesia, no scalpel, and no downtime",
+        "headline": "Skin rejuvenation service",
+        "description": "Laser skin treatment is an advanced wrinkle removal treatment that uses infrared light to tighten the skin without surgery. The laser light delivers heat to layers beneath the skin’s surface, stimulating collagen production and making the skin look tighter.",
         "price": "$200"
         
     },
     {
         "id": "2",
         "service": "Acne Blue Light Therapy",
-        "headline": "A Acne treatment service",
-        "description": "Acne blue light therapy works by targeting the bacteria that causes acne. Moderate acne that has not responded to other facial skin care treatments can be treated with this light-based therapy, which is administered over a span of several weeks. Acne blue light therapy rarely causes side effects, and does not damage skin.Intense Pulsed Light (IPL™) is a facial rejuvenation treatment that can be used to address the effects of sun damage, heredity, and aging on facial skin. Skin imperfections such as wrinkles, uneven pigmentation, freckles, rosacea, facial veins, brown spots, and enlarged pores can be eliminated or greatly improved withIPL™.",
+        "headline": "Acne treatment service",
+        "description": "Acne blue light therapy works by targeting the bacteria that causes acne. Moderate acne that has not responded to other facial skin care treatments can be treated with this light-based therapy, which is administered over a span of several weeks.",
         "price": "$350"
         
     },
     {
         "id": "3",
         "service": "Microdermabrasion",
-        "headline": "An age spots treatment service",
-        "description": "Microdermabrasion works to remove age spots and lighter acne scars. The procedure is one of the favorite wrinkle treatments because it is performed quickly in a facial esthetics office. The physician uses a handheld instrument to spray small crystals onto the surface of the skin. The crystals exfoliate the skin layers, while using suction simultaneously to remove the crystals and dead skin cells. More than one microdermabrasion treatment may be needed for wrinkle removal and other skin treatments it provides.",
+        "headline": "Dark spots treatment service",
+        "description": "Microdermabrasion works to remove age spots and lighter acne scars. The procedure is one of the favorite wrinkle treatments because it is performed quickly in a facial esthetics office. The physician uses a handheld instrument to spray small crystals of a special substance onto the skin.",
         "price": "$475"
         
     }

@@ -10,7 +10,7 @@ const Header = () => {
     // let authUser = "user";
   return (
     <div className="nav-container my-3">
-      <Navbar collapseOnSelect expand="lg" variant="dark">
+      <Navbar collapseOnSelect expand="lg" variant="light">
         <Container>
           <Link to="/" className=" text-black header-title">
             <h2 className="mb-0">
@@ -19,7 +19,7 @@ const Header = () => {
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className=" ms-3 me-auto">
+            <Nav className=" ms-3 me-auto nav-link-container">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? `active-link mx-3 p-0` : `nav-link mx-3 p-0`
@@ -44,14 +44,7 @@ const Header = () => {
               >
                 Blogs
               </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? `active-link mx-3 p-0` : `nav-link mx-3 p-0`
-                }
-                to="/reviews"
-              >
-                Reviews
-              </NavLink>
+            
               <NavLink
                 className={({ isActive }) =>
                   isActive ? `active-link mx-3 p-0` : `nav-link mx-3 p-0`
@@ -61,7 +54,7 @@ const Header = () => {
                 About Me
               </NavLink>
             </Nav>
-            <Nav>
+            <Nav className="nav-link-container">
               {authUser ? (
                 <button className="btn btn-primary">Sign Out</button>
               ) : (
