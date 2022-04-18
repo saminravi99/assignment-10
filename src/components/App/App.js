@@ -52,7 +52,11 @@ function App() {
               <CheckOut></CheckOut>
             </RequireAuth>
           }></Route>
-          <Route path="/schedule" element={<Schedule></Schedule>}></Route>
+          <Route path="/schedule" element={
+            <RequireAuth>
+              <Schedule></Schedule>
+            </RequireAuth>
+          }></Route>
           <Route path="/thankyou" element={<Thankyou></Thankyou>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>

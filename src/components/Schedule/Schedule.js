@@ -34,9 +34,7 @@ const Schedule = () => {
     return (
       <div className="schedule-container">
         <div>
-          
           <div className="d-flex flex-lg-row flex-column justify-content-center align-items-center container">
-            
             <div className="mx-auto my-5 checkout-container">
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="mb-lg-0 mb-5 text-center">
@@ -48,10 +46,10 @@ const Schedule = () => {
                 >
                   <Form.Label className="checkout-labels">Your Name</Form.Label>
                   <Form.Control
-                    disabled
+                    disabled={authUser?.displayName ? true : false}
                     value={authUser?.displayName}
                     type="text"
-                    placeholder="First Name"
+                    placeholder="Enter Your Name"
                     required
                   />
                 </Form.Group>
@@ -82,7 +80,6 @@ const Schedule = () => {
                     required
                   />
                 </Form.Group>
-                
 
                 <Form.Group
                   className="mb-3"
