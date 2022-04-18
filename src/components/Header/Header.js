@@ -7,19 +7,18 @@ import { signOut } from "firebase/auth";
 import auth from "../firebase.init";
 
 const Header = () => {
-
   const { pathname } = useLocation();
 
   const navigate = useNavigate();
 
   let from = navigate?.state?.from?.pathname || "/login";
 
-    const  [authUser] = useAuth();
+  const [authUser] = useAuth();
 
-    const handleSignOut = () => {
-       signOut(auth);
-       navigate(from);
-    };
+  const handleSignOut = () => {
+    signOut(auth);
+    navigate(from);
+  };
   return (
     <div
       className={
@@ -36,8 +35,6 @@ const Header = () => {
           : pathname === "/login"
           ? "d-block"
           : pathname === "/sign-up"
-          ? "d-block"
-          : pathname === "/checkout"
           ? "d-block"
           : pathname === "/thankyou"
           ? "d-block"

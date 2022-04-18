@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { createContext } from "react";
-import {  Route, Routes } from "react-router-dom";
+import {  Route, Routes} from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import Services from "../Services/Services";
@@ -42,6 +42,11 @@ function App() {
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
           <Route path="/checkout" element={
+            <RequireAuth>
+              <CheckOut></CheckOut>
+            </RequireAuth>
+          }></Route>
+          <Route path="/checkout/:service" element={
             <RequireAuth>
               <CheckOut></CheckOut>
             </RequireAuth>

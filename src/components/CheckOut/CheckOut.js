@@ -1,65 +1,111 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./CheckOut.css";
 import { useForm } from "react-hook-form";
-import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Button, Card, Form } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+import { AllContext } from "../App/App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft
+} from "@fortawesome/free-solid-svg-icons";
+
+
 
 const CheckOut = () => {
     const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
+  console.log(register);
+
+  const params = useParams();
+
+
+  const {services} = useContext(AllContext);
+
+  const chosenService = services.find(
+    (service) => service.service === params.service
+  );
+
+
   const onSubmit = () => {
     navigate("/thankyou");
   };
 
-  return (
-    <div className="w-50 mx-auto my-5 checkout-conatiner">
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="text-center">Please Fill Up The Form</h1>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="checkout-labels">First Name</Form.Label>
-          <Form.Control type="text" placeholder="First Name"  required />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="checkout-labels">Last Name</Form.Label>
-          <Form.Control type="text" placeholder="Last Name"  required/>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="checkout-labels">Email address</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" required />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="checkout-labels">Phone Number</Form.Label>
-          <Form.Control type="number" placeholder="Your Phone Number"  required/>
-        </Form.Group>
+  const handleGoBack = () => {
+    navigate("/services");
+  }
 
-        <label htmlFor="select" className="my-2 checkout-labels">
-          Choose Your Desired Treatment Package{" "}
-        </label>
-        <select className="select checkout-labels" {...register("services")}>
-          <option className="checkout-labels" value="Laser Skin Rejuvenation">
-            Laser Skin Rejuvenation
-          </option>
-          <option className="checkout-labels" value="Acne Blue Light Therapy">
-            Acne Blue Light Therapy
-          </option>
-          <option className="checkout-labels" value="Microdermabrasion">
-            Microdermabrasion
-          </option>
-        </select>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label className="checkout-labels">Your Address</Form.Label>
-          <Form.Control as="textarea" rows={3} required />
-        </Form.Group>
-        <Button
-          className="px-5 d-block mx-auto checkout-labels"
-          variant="primary"
-          type="submit"
-        >
-          Confirm Booking
-        </Button>
-      </Form>
-      
+  return (
+    <div>
+      <div className="back-btn" onClick={handleGoBack}>
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </div>
+      <div className="d-flex flex-lg-row flex-column justify-content-center align-items-center container">
+        <div className="checkout-service">
+          <Card className="mx-auto checkout-service-card" >
+            <Card.Img variant="top" src={chosenService?.img} />
+            <Card.Body>
+              <Card.Title>{chosenService?.service}</Card.Title>
+              <Card.Text>{chosenService?.description.slice(0, 110)}</Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+        <div className="mx-auto my-5 checkout-container">
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <h1 className="mb-lg-0 mb-5 text-center">
+              Please Fill Up The Form
+            </h1>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label className="checkout-labels">First Name</Form.Label>
+              <Form.Control type="text" placeholder="First Name" required />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label className="checkout-labels">Last Name</Form.Label>
+              <Form.Control type="text" placeholder="Last Name" required />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label className="checkout-labels">Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label className="checkout-labels">Phone Number</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Your Phone Number"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label className="checkout-labels">Your Chosen Service</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Your Chosen Service"
+                value={chosenService?.service}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label className="checkout-labels">Your Address</Form.Label>
+              <Form.Control as="textarea" rows={3} required />
+            </Form.Group>
+            <Button
+              className="px-5 d-block mx-auto checkout-labels"
+              variant="primary"
+              type="submit"
+            >
+              Confirm Booking
+            </Button>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };
