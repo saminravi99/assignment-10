@@ -2,7 +2,10 @@ import React from 'react';
 import './EachBlog.css'
 
 const EachBlog = (props) => {
+
+    // Using Props from Context API
     const {name, blog, blogHeading, blogImage, image, date} = props;
+
     return (
       <div className="container blog-container">
         <div className="col-12 mb-5">

@@ -9,27 +9,32 @@ import auth from "../firebase.init";
 import "./SocialLogin.css";
 
 const SocialLogin = () => {
+
+  //Using React Firebase Hooks
   const [signInWithFacebook] = useSignInWithFacebook(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const [signInWithGithub] = useSignInWithGithub(auth);
 
+  //Using React Router DOM
   const navigate = useNavigate();
   const location = useLocation();
-
   let from = location.state?.from?.pathname || "/";
 
+  //Using Function to Sign In Using Google
   const handleGoogleSignIn = () => {
     signInWithGoogle().then(() => {
       navigate(from, { replace: true });
     });
   };
 
+  //Using Function to Sign In Using Facebook
   const handleFacebookSignIn = () => {
     signInWithFacebook().then(() => {
       navigate(from, { replace: true });
     });
   };
 
+  //Using Function to Sign In Using Github
   const handleGithubSignIn = () => {
     signInWithGithub().then(() => {
       navigate(from, { replace: true });

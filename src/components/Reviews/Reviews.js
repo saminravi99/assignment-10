@@ -4,8 +4,10 @@ import EachReview from "../EachReview/EachReview";
 import "./Reviews.css";
 
 const Reviews = () => {
+  // Using Context API
   const {reviews} = useContext(AllContext);
 
+  // Mapping The reviews data array
   const eachReview = reviews.map((review) => {
     return <EachReview key={review.id} {...review}></EachReview>;
   });

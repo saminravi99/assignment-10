@@ -10,27 +10,31 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 
 const CheckOut = () => {
+
+  //Using React Firebase Hook
   const [authUser] = useAuthState(auth);
-
-  console.log(authUser);
-
-  const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
-
-  console.log(register);
-
   const params = useParams();
 
+  // Using React Router DOM
+  const navigate = useNavigate();
+
+  // Using React Hook Form
+  const { register, handleSubmit } = useForm();
+  console.log(register);
+
+   const onSubmit = () => {
+     navigate("/thankyou");
+   };
+
+  // Using Context API
   const { services } = useContext(AllContext);
 
+  //Using Array Find Method For Dynamic Checkout Route
   const chosenService = services.find(
     (service) => service.service === params.service
   );
 
-  const onSubmit = () => {
-    navigate("/thankyou");
-  };
-
+  // Using FUnction to Return to Previous Page
   const handleGoBack = () => {
     navigate("/services");
   };

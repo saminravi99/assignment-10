@@ -9,8 +9,6 @@
 }
 .service-card{
     transition: transform .5s, box-shadow .5s;
-    /* height: 520px; */
-
 }
 
 .service-card:hover{

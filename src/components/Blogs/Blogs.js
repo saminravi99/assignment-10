@@ -7,6 +7,7 @@ import EachBlog from '../EachBlog/EachBlog';
 
 const Blogs = () => {
 
+    // Using Context API
     const {blogs} = useContext(AllContext);
     
 

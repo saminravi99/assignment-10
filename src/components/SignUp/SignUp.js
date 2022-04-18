@@ -8,6 +8,8 @@ import auth from "../firebase.init";
 import "./SignUp.css";
 
 const SignUp = () => {
+
+  //Declaring State to Keep The values of Input Field
   const [name, setName] = useState("");
   console.log(name);
   const [email, setEmail] = useState("");
@@ -17,6 +19,7 @@ const SignUp = () => {
   const [check, setCheck] = useState(false);
 
 
+  //Using React Firebase Hooks
   const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(
     auth,
     {
@@ -25,38 +28,45 @@ const SignUp = () => {
   );
 
   
+  //Using React Router DOM
   const navigate = useNavigate();
 
+  //Using Function to Redirect Login Route
   const handleGoToLogin = () => {
     navigate("/login");
   };
 
+  //Using Function to Sign Up User with Email and Password
   const handleSignUp = (e) => {
     e.preventDefault();
 
-    // if (password.length < 8) {
-    //   setError("Password must be at least 8 characters");
-    //   return;
-    // }
+   //Validating Password and Confirm Password
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters");
+      return;
+    }
 
-    // if (
-    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-    //     password
-    //   ) === false
-    // ) {
-    //   setError(
-    //     "Password must contain at least one lowercase letter, one uppercase letter, one number and one special character"
-    //   );
-    //   return;
-    // }
+    if (
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        password
+      ) === false
+    ) {
+      setError(
+        "Password must contain at least one lowercase letter, one uppercase letter, one number and one special character"
+      );
+      return;
+    }
+
     if (password !== confirmPassword) {
       setError("Password and Confirm Password does not match");
       return;
     }
 
+    //Creating User with Email and Password
     createUserWithEmailAndPassword(email, password);
     navigate("/");
   };
+
   return (
     <div className="conatiner mx-auto my-5 sign-up-container">
       <Form onSubmit={handleSignUp} className="form-container">

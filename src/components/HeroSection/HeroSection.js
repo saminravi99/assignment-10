@@ -5,13 +5,17 @@ import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
 
+
+  // Using From React Router DOM
   const navigate = useNavigate();
 
 
+  //Using Function to Redirect to Schedule Route
   const handleSchedule = () => {
     navigate("/schedule");
   }
 
+  // Using Function to Redirect to About Me Route
   const handleContact = () => {
     navigate("/about-me");
   }

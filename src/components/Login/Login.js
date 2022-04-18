@@ -12,31 +12,35 @@ import toast from "react-hot-toast";
 import Loading from "../Loading/Loading";
 
 const Login = () => {
+  //Declaring State to Keep The values of Input Field
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  //Using React Firebase Hooks
   const [signInWithEmailAndPassword, signInUser, signInLoading, signInError] =
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail, resetEmailSending, resetError] =
     useSendPasswordResetEmail(auth);
-  console.log(signInError);
 
+  //Using React Router DOM
   const navigate = useNavigate();
   const location = useLocation();
-
   let from = location?.state?.from?.pathname || "/";
 
+  //Using Function to Sign Up Route
   const handleCreateAccount = () => {
     navigate("/sign-up");
   };
 
+  //Using Function to Sign In USer with Email and Password
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
   };
 
+  //Using React Built in Hook to Show Custom Error Message for wrong password or invalid email/user
   useEffect(() => {
     if (
       signInError &&
@@ -53,6 +57,7 @@ const Login = () => {
     }
   }, [signInError]);
 
+  //Using React Built in Hook to Show Custom Error Message and Toast Message for successful login 
   useEffect(() => {
     if (signInUser) {
       navigate(from, { replace: true });
@@ -60,10 +65,12 @@ const Login = () => {
     }
   }, [signInUser, navigate, from]);
 
+  // Using Function to Reset password if User forgets password
   const handleForgetPassword = async () => {
     await sendPasswordResetEmail(email);
   };
 
+  //Using React Built in Hook to Show Custom Error Message and Toast Message for Reset Password
   useEffect(() => {
     if (resetEmailSending) {
       toast.success("Sending Reset Email");
@@ -75,18 +82,12 @@ const Login = () => {
     }
   }, [resetError, resetEmailSending]);
 
+  // Using setTimeout to remove the error message after some time
   setTimeout(() => {
-    if(email) {
+    if (email) {
       setError("");
     }
   }, 3000);
-
-
-  // useEffect(() => {
-  //   if(email){
-  //     toast.success("Email Sent To Reset Password");
-  //   }
-  // }, [email])
 
   return (
     <div>

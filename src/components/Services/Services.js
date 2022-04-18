@@ -4,8 +4,11 @@ import EachService from "../EachService/EachService";
 import "./Services.css";
 
 const Services = () => {
+
+  // Using Context API
   const {services} = useContext(AllContext);
 
+  // Mapping The services data array
   const eachService = services.map((service) => {
     return (
       <EachService

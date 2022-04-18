@@ -3,10 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import "./EachService.css"
 const EachService = (props) => {
 
+  // Using From React Router DOM
    const navigate = useNavigate();
 
+  // Using Props from Context API
     const { service, headline, description, price, img} = props;
 
+  //Using function to redirect to Dynamic Checkout Route
    const handleService = () => {
       navigate(`/checkout/${service}`);  
     }

@@ -2,7 +2,10 @@ import React from 'react';
 import "./EachReview.css";
 
 const EachReview = (props) => {
+
+    // Using Props from Context API
     const {name, date, image, review} = props;
+
     return (
       <div className="col-md-4 col-12 col-sm-6 my-lg-0 my-3">
         <div className="card">

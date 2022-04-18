@@ -7,14 +7,16 @@ import { signOut } from "firebase/auth";
 import auth from "../firebase.init";
 
 const Header = () => {
+
+  // Using React Router DOM
   const { pathname } = useLocation();
-
   const navigate = useNavigate();
-
   let from = navigate?.state?.from?.pathname || "/login";
 
+  // Using React Firebase Hooks
   const [authUser] = useAuth();
 
+  //Using Function to Sign Out Using Firebase Hooks
   const handleSignOut = () => {
     signOut(auth);
     navigate(from);

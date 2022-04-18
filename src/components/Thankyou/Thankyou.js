@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import "./Thankyou.css"
 
 const Thankyou = () => {
+
+  // Using From React Router DOM
     const navigate = useNavigate();
+
+    //Using Function to redirect to Home Page
     const handleThankyou= () => {
         navigate("/");
     }

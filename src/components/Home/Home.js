@@ -1,16 +1,11 @@
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Toaster } from "react-hot-toast";
-import auth from "../firebase.init";
 import HeroSection from "../HeroSection/HeroSection";
 import Reviews from "../Reviews/Reviews";
 import Services from "../Services/Services";
 import "./Home.css";
 
 const Home = () => {
-  const [authUser] = useAuthState(auth);
 
-  console.log(authUser);
   return (
     <div>
       <HeroSection></HeroSection>
@@ -23,7 +18,6 @@ const Home = () => {
         What Happy Clients Say About Me
       </h2>
       <Reviews></Reviews>
-      <Toaster></Toaster>
     </div>
   );
 };

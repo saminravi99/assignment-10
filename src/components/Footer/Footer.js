@@ -1,11 +1,13 @@
 import "./Footer.css"
 import React from 'react';
-// import { Link } from "react-router-dom";
 
 const Footer = () => {
 
+
+  // Using Function to get Year 
     const date = new Date();
     const year = date.getFullYear();
+    
     return (
       <div className="mt-5 mb-3">
         <footer className="footer">

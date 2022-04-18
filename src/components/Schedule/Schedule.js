@@ -8,28 +8,20 @@ import "./Schedule.css"
 
 const Schedule = () => {
 
+  // Using React Firebase Hook
     const [authUser] = useAuthState(auth);
 
-    console.log(authUser);
 
+  // Using React router DOM
     const navigate = useNavigate();
+
+
+  // Using React Hook Form
     const { register, handleSubmit } = useForm();
-
     console.log(register);
-
-    // const params = useParams();
-
-    // const { services } = useContext(AllContext);
-
-    // const chosenService = services.find(
-    //   (service) => service.service === params.service
-    // );
-
     const onSubmit = () => {
       navigate("/thankyou");
     };
-
-   
 
     return (
       <div className="schedule-container">
