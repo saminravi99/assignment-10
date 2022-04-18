@@ -62,34 +62,31 @@ const Login = () => {
 
   const handleForgetPassword = async () => {
     await sendPasswordResetEmail(email);
-    if(email){
-      signInWithEmailAndPassword(email, password);
-    }
   };
 
   useEffect(() => {
-   
+    if (resetEmailSending) {
+      toast.success("Sending Reset Email");
+    }
     if (resetError) {
       setError("Please Enter a Valid Email");
+      toast.error("Please Enter a Valid Email");
+      return;
     }
   }, [resetError, resetEmailSending]);
 
-
-  useEffect(() => {
-    if(signInLoading){
-      toast.success("Email Sent To Reset Password");
-    }
-  }, [signInLoading])
-
   setTimeout(() => {
-    if(error){
+    if(email) {
       setError("");
     }
-
-    if(email){
-      setEmail("");
-    }
   }, 3000);
+
+
+  // useEffect(() => {
+  //   if(email){
+  //     toast.success("Email Sent To Reset Password");
+  //   }
+  // }, [email])
 
   return (
     <div>
