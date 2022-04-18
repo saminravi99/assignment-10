@@ -1,20 +1,26 @@
 import React from "react";
 import {
+  useAuthState,
   useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
+// import useAuth from "../hooks/useAuth";
 import "./SocialLogin.css";
 
 const SocialLogin = () => {
-
   //Using React Firebase Hooks
   const [signInWithFacebook] = useSignInWithFacebook(auth);
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const [signInWithGithub] = useSignInWithGithub(auth);
 
+  // Using React Firebase Hooks
+  const [authUser] = useAuthState(auth);
+
+  console.log(authUser);
   //Using React Router DOM
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,24 +28,48 @@ const SocialLogin = () => {
 
   //Using Function to Sign In Using Google
   const handleGoogleSignIn = () => {
-    signInWithGoogle().then(() => {
-      navigate(from, { replace: true });
-    });
+    signInWithGoogle()
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .then(() => {
+        if (!authUser) {
+          toast.success("Successfully Signed In With Google");
+        }
+      });
   };
 
   //Using Function to Sign In Using Facebook
   const handleFacebookSignIn = () => {
-    signInWithFacebook().then(() => {
-      navigate(from, { replace: true });
-    });
+    signInWithFacebook()
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .then(() => {
+        if (!authUser) {
+          toast.success("Successfully Signed In With Facebook");
+        }
+      });
   };
 
   //Using Function to Sign In Using Github
   const handleGithubSignIn = () => {
-    signInWithGithub().then(() => {
-      navigate(from, { replace: true });
-    });
+    signInWithGithub()
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .then(() => {
+        if (!authUser) {
+          toast.success("Successfully Signed In With Github");
+        }
+      });
   };
+
+  // useEffect(() => {
+  //   if (authUser) {
+  //     toast.success("Successfully Logged In");
+  //   }
+  // }, [authUser]);
 
   return (
     <div className="socials">
