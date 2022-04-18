@@ -37,7 +37,7 @@ const SocialLogin = () => {
   };
 
   return (
-    <div>
+    <div className="socials">
       <div className="d-flex  justify-content-center align-items-center my-3">
         <div className="line"></div>
         <p className="pb-0 mb-0 mx-3">or</p>
@@ -45,10 +45,10 @@ const SocialLogin = () => {
       </div>
 
       <div className="social-btn">
-        <div>
+        <div className="social-button-container">
           <button
             onClick={handleGoogleSignIn}
-            className="d-block mx-auto google-btn"
+            className="d-block mx-auto mx-0 google-btn"
           >
             Continue with Google
           </button>

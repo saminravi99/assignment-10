@@ -58,7 +58,7 @@ const SignUp = () => {
     navigate("/");
   };
   return (
-    <div className="w-50 mx-auto my-5">
+    <div className="conatiner mx-auto my-5 sign-up-container">
       <Form onSubmit={handleSignUp} className="form-container">
         <h1 className="text-center text-primary">Register</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">

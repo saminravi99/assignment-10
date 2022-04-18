@@ -5,3 +5,13 @@
 .forget-pass{
     cursor: pointer;
 }
+
+.login-container{
+    width: 50%;
+}
+
+@media screen and (max-width: 768px){
+    .login-container{
+        width: 90% !important;
+    }
+}

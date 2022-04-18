@@ -93,7 +93,7 @@ const Login = () => {
       {signInLoading ? (
         <Loading></Loading>
       ) : (
-        <div className="w-50 mx-auto mt-5">
+        <div className="mx-auto mt-5 login-container">
           <Form onSubmit={handleLogin} className="form-container">
             <h1 className="text-center text-primary">Sign In</h1>
             <Form.Group className="mb-3" controlId="formBasicEmail">
