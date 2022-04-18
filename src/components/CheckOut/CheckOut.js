@@ -8,10 +8,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
 
 
 
 const CheckOut = () => {
+
+   const [authUser] = useAuthState(auth);
+
+   console.log(authUser);
+
     const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
@@ -55,14 +62,11 @@ const CheckOut = () => {
             <h1 className="mb-lg-0 mb-5 text-center">
               Please Fill Up The Form
             </h1>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label className="checkout-labels">First Name</Form.Label>
-              <Form.Control type="text" placeholder="First Name" required />
+            <Form.Group className="mb-3 mt-5" controlId="exampleForm.ControlInput1">
+              <Form.Label className="checkout-labels">Your Name</Form.Label>
+              <Form.Control disabled value={authUser?.displayName} type="text" placeholder="First Name" required />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label className="checkout-labels">Last Name</Form.Label>
-              <Form.Control type="text" placeholder="Last Name" required />
-            </Form.Group>
+          
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="checkout-labels">Email address</Form.Label>
               <Form.Control
@@ -82,6 +86,7 @@ const CheckOut = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="checkout-labels">Your Chosen Service</Form.Label>
               <Form.Control
+               disabled
                 type="text"
                 placeholder="Your Chosen Service"
                 value={chosenService?.service}
