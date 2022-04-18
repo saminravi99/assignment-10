@@ -4,8 +4,7 @@
 
 ---
 
-### Repository Link : [https://github.com/programming-hero-web-course-4/independent-service-provider-saminravi99
-](https://github.com/programming-hero-web-course-4/independent-service-provider-saminravi99)
+### Repository Link : [https://github.com/programming-hero-web-course-4/independent-service-provider-saminravi99](https://github.com/programming-hero-web-course-4/independent-service-provider-saminravi99)
 
 ---
 
