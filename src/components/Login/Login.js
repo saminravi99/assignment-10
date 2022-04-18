@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import {useLocation, useNavigate } from "react-router-dom";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import "./Login.css";
@@ -13,36 +16,38 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-
-
-  const [signInWithEmailAndPassword, signInUser, signInLoading,  signInError] =
+  const [signInWithEmailAndPassword, signInUser, signInLoading, signInError] =
     useSignInWithEmailAndPassword(auth);
-console.log(signInError);
+
+  const [sendPasswordResetEmail, resetEmailSending, resetError] =
+    useSendPasswordResetEmail(auth);
+  console.log(signInError);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   let from = location?.state?.from?.pathname || "/";
 
-
   const handleCreateAccount = () => {
-    navigate("/signup");
+    navigate("/sign-up");
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(email, password);
   };
-  
-
-
- 
 
   useEffect(() => {
-    if (signInError && signInError?.message === "Firebase: Error (auth/user-not-found).") {
+    if (
+      signInError &&
+      signInError?.message === "Firebase: Error (auth/user-not-found)."
+    ) {
       setError("User Does Not Exist. Please Sign Up");
       toast.error("User Does Not Exist. Please Sign Up");
-    }else if(signInError && signInError?.message === "Firebase: Error (auth/wrong-password)."){
+    } else if (
+      signInError &&
+      signInError?.message === "Firebase: Error (auth/wrong-password)."
+    ) {
       setError("Wrong Password");
       toast.error("Wrong Password");
     }
@@ -50,14 +55,41 @@ console.log(signInError);
 
   useEffect(() => {
     if (signInUser) {
-      navigate(from , { replace: true });
+      navigate(from, { replace: true });
       toast.success("Login Successful");
     }
   }, [signInUser, navigate, from]);
 
-  const handleForgetPassword = () => {
-    navigate("/forget-password");
+  const handleForgetPassword = async () => {
+    await sendPasswordResetEmail(email);
+    if(email){
+      signInWithEmailAndPassword(email, password);
+    }
   };
+
+  useEffect(() => {
+   
+    if (resetError) {
+      setError("Please Enter a Valid Email");
+    }
+  }, [resetError, resetEmailSending]);
+
+
+  useEffect(() => {
+    if(signInLoading){
+      toast.success("Email Sent To Reset Password");
+    }
+  }, [signInLoading])
+
+  setTimeout(() => {
+    if(error){
+      setError("");
+    }
+
+    if(email){
+      setEmail("");
+    }
+  }, 3000);
 
   return (
     <div>

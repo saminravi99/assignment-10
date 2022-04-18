@@ -14,6 +14,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [check, setCheck] = useState(false);
+
 
   const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(
     auth,
@@ -22,7 +24,13 @@ const SignUp = () => {
     }
   );
 
+  
   const navigate = useNavigate();
+
+  const handleGoToLogin = () => {
+    navigate("/login");
+  };
+
   const handleSignUp = (e) => {
     e.preventDefault();
 
@@ -100,19 +108,28 @@ const SignUp = () => {
         </Form.Group>
         <p className="text-danger">{error}</p>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Accept Terms and Conditions" />
+          <Form.Check
+            onChange={() => setCheck(!check)}
+            type="checkbox"
+            label="Accept Terms and Conditions"
+          />
         </Form.Group>
         <h6 className="my-3">
           Already have an account?
           <span
-            onClick={handleSignUp}
+            onClick={handleGoToLogin}
             className="text-primary create-new-account ms-2"
           >
             Login
           </span>
         </h6>
         <div className=" d-flex justify-content-center align-items-center">
-          <Button className="px-5" variant="primary" type="submit">
+          <Button
+            className="px-5"
+            disabled={check ? false : true}
+            variant="primary"
+            type="submit"
+          >
             Sign Up
           </Button>
         </div>
