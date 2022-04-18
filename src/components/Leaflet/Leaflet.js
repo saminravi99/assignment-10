@@ -9,7 +9,7 @@ const Leaflet = () => {
         <div className="leaflet-container">
           <MapContainer
             center={[23.757795396158066, 90.36558879590045]}
-            zoom={13}
+            zoom={14}
             scrollWheelZoom={true}
           >
             <TileLayer

@@ -14,14 +14,24 @@
     width: 60%
 }
 
+.about-me-text-container p{
+    line-height: 2;
+}
+
 .about-me-image-container{
     width: 50%
 }
 
 .about-me-img{
-    width: 270px;
-    height: 270px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
+}
+
+.leaflet-text h5{
+    font-family: Manrope;
+    font-weight: 700;
+
 }
 
 @media screen and (max-width: 768px){
