@@ -87,7 +87,7 @@ const Login = () => {
     if (email) {
       setError("");
     }
-  }, 3000);
+  }, 7000);
 
   return (
     <div>
