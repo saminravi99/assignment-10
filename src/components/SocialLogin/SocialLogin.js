@@ -20,7 +20,6 @@ const SocialLogin = () => {
   // Using React Firebase Hooks
   const [authUser] = useAuthState(auth);
 
-  console.log(authUser);
   //Using React Router DOM
   const navigate = useNavigate();
   const location = useLocation();
