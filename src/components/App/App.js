@@ -17,6 +17,7 @@ import useReviews from "../hooks/useReviews";
 import Header from "../Header/Header"
 import RequireAuth from "../RequireAuth/RequireAuth";
 import { Toaster } from "react-hot-toast";
+import Schedule from "../Schedule/Schedule";
 
 
 
@@ -51,6 +52,7 @@ function App() {
               <CheckOut></CheckOut>
             </RequireAuth>
           }></Route>
+          <Route path="/schedule" element={<Schedule></Schedule>}></Route>
           <Route path="/thankyou" element={<Thankyou></Thankyou>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>

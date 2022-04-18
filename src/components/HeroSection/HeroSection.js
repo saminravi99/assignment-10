@@ -1,8 +1,22 @@
 import React from "react";
 import "./HeroSection.css";
 import ravi from "../../img/Ravi.jpg";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+
+  const navigate = useNavigate();
+
+
+  const handleSchedule = () => {
+    navigate("/schedule");
+  }
+
+  const handleContact = () => {
+    navigate("/about-me");
+  }
+
+
   return (
     <div className="d-flex justify-content-around align-items-lg-center  pb-lg-5 hero-section-container">
       <div className=" container hero-detail">
@@ -17,7 +31,7 @@ const HeroSection = () => {
           prices are based on donations and not restrictive health plan
           networks.
         </p>
-        <button className="btn btn-primary">Contact Me</button>
+        <button onClick={handleContact} className="btn btn-primary">Contact Me</button>
       </div>
       <div className="hero-card d-flex justify-content-center align-items-center">
         <div >
@@ -28,7 +42,7 @@ const HeroSection = () => {
             <h6 className=" text-center ">Dr. Samin Israr Ravi</h6>
             <p className=" text-center">Skin Specialist</p>
             <div className=" d-flex justify-content-center align-items-center my-3">
-              <button className="btn btn-primary">Make Schedule</button>
+              <button onClick={handleSchedule} className="btn btn-primary">Make Schedule</button>
             </div>
           </div>
         </div>

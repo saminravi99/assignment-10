@@ -36,6 +36,8 @@ const Header = () => {
           ? "d-block"
           : pathname === "/sign-up"
           ? "d-block"
+          : pathname === "/schedule"
+          ? "d-block"
           : pathname === "/thankyou"
           ? "d-block"
           : pathname === "/"

@@ -55,7 +55,7 @@ const AboutMe = () => {
             </h5>
             <h5 className="my-4">
               <FontAwesomeIcon className="me-3" icon={faEnvelope} />
-              Official:{" "}
+              Official:
               <a href="http://dermacare.co.za/">http://dermacare.co.za/</a>
             </h5>
             <h5 className="mb-lg-0 mb-5">
